@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photo Album</title>
+  <style>
+
+    .gallery img {
+      width: calc(25% - 20px);
+      height: 200px;
+      object-fit: cover;
+      margin: 5px;
+      transition: filter 0.5s;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .gallery img.selected {
+      border-color: black;
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .controls button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 14px;
+      background-color: slateblue;
+      color: #fff;
+      cursor: pointer;
+
+    }
+
+    .controls button:hover {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="background-color:black;color:white;text-align:center">Photo Album</h1>
+
+  <div class="gallery">
+    <img src="1.jpg" alt="Image 1" onclick="selectImage(this)">
+    <img src="2.png" alt="Image 2" onclick="selectImage(this)">
+    <img src="3.jpg" alt="Image 3" onclick="selectImage(this)">
+    <img src="4.jpeg" alt="Image 4" onclick="selectImage(this)">
+    <img src="5.webp" alt="Image 5" onclick="selectImage(this)">
+    <img src="6.webp" alt="Image 6" onclick="selectImage(this)">
+    <img src="7.jpeg" alt="Image 7" onclick="selectImage(this)">
+    <img src="8.jpg" alt="Image 8" onclick="selectImage(this)">
+  </div>
+
+  <div class="controls">
+    <button onclick="IncreaseBrightness()">Increase Brightness</button>
+    <button onclick="DecreaseBrightness()">Decrease Brightness</button>
+    <button onclick="changeGrayscale()">Apply Grayscale</button>
+    <button onclick="reduceResolution()">Reduce Resolution</button>
+    <button onclick="addReddishTint()">Add Reddish Tint</button>
+    <button onclick="addBluishTint()">Make Bluish</button>
+    <button onclick="addGreenishTint()">Make Greenish</button>
+    <button onclick="">Create Thumbnail</button>
+    <button onclick="">Generate QR</button>
+    <button onclick="">Create Avatar</button>
+  </div>
+
+  <script>
+    var selectedImage = null;
+
+    function selectImage(image) {
+      if (selectedImage) {
+        selectedImage.classList.remove("selected");
+      }
+      selectedImage = image;
+      selectedImage.classList.add("selected");
+    }
+
+    function IncreaseBrightness() {
+      if (selectedImage) {
+        selectedImage.style.filter = "brightness(1.3)" ;
+      }
+    }
+
+    function DecreaseBrightness() {
+      if (selectedImage) {
+        selectedImage.style.filter = "brightness(0.7)" ;
+      }
+    }
+
+    function changeGrayscale() {
+      if (selectedImage) {
+        selectedImage.style.filter = "grayscale(100%)";
+      }
+    }
+
+    function addReddishTint() {
+      if (selectedImage) {
+        selectedImage.style.filter = "sepia(100%)";
+      }
+    }
+
+    function addBluishTint() {
+      if (selectedImage) {
+        selectedImage.style.filter = "hue-rotate(240deg)";
+      }
+    }
+
+    function addGreenishTint() {
+      if (selectedImage) {
+        selectedImage.style.filter = "hue-rotate(120deg)";
+      }
+    }
+
+    function reduceResolution() {
+      if (selectedImage) {
+        selectedImage.style.width = (selectedImage.offsetWidth * 0.5) + "px";
+        selectedImage.style.height = (selectedImage.offsetHeight * 0.5) + "px";
+      }
+    }
+  </script>
+</body>
+</html>
